@@ -22,7 +22,7 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
     { data: relapses },
   ] = await Promise.all([
     supabase.from('user_profiles').select('*').eq('id', user.id).single(),
-    supabase.from('diary_entries').select('id, created_at').eq('user_id', user.id),
+    supabase.from('diary_entries').select('*').eq('user_id', user.id),
     supabase.from('cravings').select('*').eq('user_id', user.id),
     supabase.from('relapses').select('created_at').eq('user_id', user.id).order('created_at'),
   ])

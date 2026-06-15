@@ -16,7 +16,7 @@ export default async function AchievementsPage({ params }: { params: Promise<{ l
     { data: cravings },
   ] = await Promise.all([
     supabase.from('user_profiles').select('*').eq('id', user.id).single(),
-    supabase.from('diary_entries').select('id, created_at').eq('user_id', user.id),
+    supabase.from('diary_entries').select('*').eq('user_id', user.id),
     supabase.from('cravings').select('*').eq('user_id', user.id),
   ])
 
